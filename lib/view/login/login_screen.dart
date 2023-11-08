@@ -17,26 +17,34 @@ class _LoginScreenState extends State<LoginScreen> {
       body: FlutterLogin(
         headerWidget: Center(
           child: Padding(
-            padding: EdgeInsets.only(bottom: 2.h),
+            padding: EdgeInsets.fromLTRB(0,1.h,0,3.h),
             child: Text(
               'Welcome to the best chat app ever!',
               style: TextStyle(
-                fontSize: 17.sp,
+                letterSpacing: 1.2,
+                fontSize: 15.5.sp,
+                fontWeight: FontWeight.w500,
+
               ),
             ),
           ),
         ),
         hideForgotPasswordButton: true,
+        
         theme: LoginTheme(
           pageColorDark: Colors.grey[800],
           pageColorLight: Colors.grey[800],
-          primaryColor: Colors.amber,
+          primaryColor: Colors.indigo,
+          accentColor: Colors.indigo,
           cardTheme: CardTheme(color: Colors.grey[300]),
-          buttonTheme: LoginButtonTheme(splashColor: Colors.amber[700]),
+          buttonTheme: LoginButtonTheme(splashColor: Colors.indigo[700]),
         ),
+        
+        onSignup: (p0) => null,
         onLogin: (p0) => null,
         onRecoverPassword: (p0) => null,
         onSubmitAnimationCompleted: () {},
+        messages: LoginMessages(loginButton: 'Login', signupButton: 'Register'),
       ),
     );
   }

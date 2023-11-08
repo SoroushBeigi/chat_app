@@ -17,6 +17,7 @@ class _ChatAppState extends State<ChatApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(primarySwatch: Colors.indigo,),
       debugShowCheckedModeBanner: false,
       home: ResponsiveSizer(
         builder: (context, orientation, screenType) => const LoginScreen(),
