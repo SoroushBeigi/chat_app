@@ -1,5 +1,8 @@
+import 'package:chat_app/services/auth_service.dart';
+import 'package:chat_app/view_model/login_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -41,7 +44,16 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         
         onSignup: (p0) => null,
-        onLogin: (p0) => null,
+        onLogin: (p0){
+          final loginVM = Provider.of<LoginViewModel>(context,listen: false);
+          try{
+            print(p0.name);
+            print(p0.password);
+            // loginVM.signIn(p0., password)
+          }catch(e){
+
+          }
+        },
         onRecoverPassword: (p0) => null,
         onSubmitAnimationCompleted: () {},
         messages: LoginMessages(loginButton: 'Login', signupButton: 'Register'),
