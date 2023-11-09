@@ -1,6 +1,7 @@
 import 'package:chat_app/view_model/login_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -40,35 +41,34 @@ class _LoginScreenState extends State<LoginScreen> {
           cardTheme: CardTheme(color: Colors.grey[300]),
           buttonTheme: LoginButtonTheme(splashColor: Colors.indigo[700]),
         ),
-        onSignup:_register,
-        onLogin:_login,
+        onSignup: _register,
+        onLogin: _login,
         onRecoverPassword: (p0) => null,
-        onSubmitAnimationCompleted: () {},
+        onSubmitAnimationCompleted: () => GoRouter.of(context).go('/home'),
         messages: LoginMessages(loginButton: 'Login', signupButton: 'Register'),
       ),
     );
   }
 
   Future<String?>? _login(loginData) async {
-          final loginVM = Provider.of<LoginViewModel>(context, listen: false);
-          final credentials =
-              await loginVM.signIn(loginData.name, loginData.password);
-          if (credentials == null) {
-            return 'Wront email or password, Please try again!';
-          } else {
-            return null;
-          }
-        }
-
-  Future<String?>? _register(registerData)async {
-       final loginVM = Provider.of<LoginViewModel>(context, listen: false);
-          final credentials =
-              await loginVM.signUp(registerData.name, registerData.password);
-          if (credentials == null) {
-            return 'The email is being used! Please try to login';
-          } else {
-            return null;
-          }
-        }
+    final loginVM = Provider.of<LoginViewModel>(context, listen: false);
+    final credentials =
+        await loginVM.signIn(loginData.name, loginData.password);
+    if (credentials == null) {
+      return 'Wront email or password, Please try again!';
+    } else {
+      return null;
+    }
   }
 
+  Future<String?>? _register(registerData) async {
+    final loginVM = Provider.of<LoginViewModel>(context, listen: false);
+    final credentials =
+        await loginVM.signUp(registerData.name, registerData.password);
+    if (credentials == null) {
+      return 'The email is being used! Please try to login';
+    } else {
+      return null;
+    }
+  }
+}
