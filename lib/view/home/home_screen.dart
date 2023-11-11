@@ -1,6 +1,7 @@
 import 'package:chat_app/view/home/widgets/list_item.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
             return const Text('Error!');
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator();
+            return Center(child: SizedBox(height:20.w,width:20.w,child: const CircularProgressIndicator()));
           }
           return ListView(
             children: snapshot.data!.docs
