@@ -8,8 +8,11 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
+  //----------------------------------------------------
+  //Replace with your own firebase options
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  //----------------------------------------------------
   runApp(
     ChangeNotifierProvider(
       create: (context) => LoginViewModel()..readLoginStatus(),
@@ -29,7 +32,7 @@ class _ChatAppState extends State<ChatApp> {
   @override
   Widget build(BuildContext context) {
     return ResponsiveSizer(
-        builder: (context, orientation, screenType) => Consumer<LoginViewModel>(
+      builder: (context, orientation, screenType) => Consumer<LoginViewModel>(
         builder: (context, loginViewModel, child) => MaterialApp.router(
           theme: ThemeData(
             primarySwatch: Colors.indigo,
