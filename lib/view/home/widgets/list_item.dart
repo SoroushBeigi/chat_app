@@ -12,7 +12,7 @@ class ListItem extends StatelessWidget {
     if (_auth.currentUser!.email != data['email']) {
       return ListTile(
         title: Text(data['email']),
-        onTap: () =>  context.goNamed("chat", queryParameters: {'id': data['uid'], 'email': data['email']}),
+        onTap: () =>  GoRouter.of(context).pushNamed("chat", queryParameters: {'id': data['uid'], 'email': data['email']}),
       );
     }else{
       return const SizedBox();

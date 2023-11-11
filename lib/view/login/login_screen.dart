@@ -43,6 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         onSignup: _register,
         onLogin: _login,
+        passwordValidator: (value) => value==null || value.length<6? 'Password is too short!' : null,
         onRecoverPassword: (p0) => null,
         onSubmitAnimationCompleted: () => GoRouter.of(context).go('/home'),
         messages: LoginMessages(loginButton: 'Login', signupButton: 'Register'),

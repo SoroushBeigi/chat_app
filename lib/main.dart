@@ -4,6 +4,7 @@ import 'package:chat_app/view_model/login_view_model.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,13 +28,15 @@ class ChatApp extends StatefulWidget {
 class _ChatAppState extends State<ChatApp> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<LoginViewModel>(
-      builder: (context, loginViewModel, child) => MaterialApp.router(
-        theme: ThemeData(
-          primarySwatch: Colors.indigo,
+    return ResponsiveSizer(
+        builder: (context, orientation, screenType) => Consumer<LoginViewModel>(
+        builder: (context, loginViewModel, child) => MaterialApp.router(
+          theme: ThemeData(
+            primarySwatch: Colors.indigo,
+          ),
+          debugShowCheckedModeBanner: false,
+          routerConfig: Routes.config(loginViewModel.loggedIn),
         ),
-        debugShowCheckedModeBanner: false,
-        routerConfig: Routes.config(loginViewModel.loggedIn),
       ),
     );
   }
